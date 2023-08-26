@@ -85,6 +85,14 @@ while True:
 
             break  # Exit the loop to prevent iterating over a modified list
 
+        # Check if alien has reached the player boundary
+        if alien.ycor() <= player.ycor():
+            scoreboard.game_over()
+            screen.update()
+            time.sleep(2)
+            screen.bye()
+            exit()
+
     # Check if all aliens are removed
     if not aliens:
         scoreboard.increase_level()
