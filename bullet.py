@@ -9,7 +9,7 @@ class Bullet(turtle.Turtle):
         self.speed(0)
         self.shape(BULLET_SHAPE)
         self.color(BULLET_COLOR)
-        self.shapesize(stretch_wid=2, stretch_len=0.5)
+        self.shapesize(stretch_wid=1, stretch_len=0.2)
         self.penup()
         self.hideturtle()
         self.speed_val = BULLET_SPEED
@@ -41,4 +41,4 @@ class Bullet(turtle.Turtle):
 
     def is_collision(self, target):
         """Check if the bullet has collided with the target."""
-        return self.distance(target) < 25
+        return self.distance(target) < 17
