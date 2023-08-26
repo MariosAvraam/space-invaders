@@ -1,7 +1,7 @@
 import turtle
 from settings import (
     SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BG_COLOR, SCREEN_TITLE, 
-    NUMBER_OF_ALIENS
+    NUMBER_OF_ALIENS, ALIEN_COUNT_INCREASE, ALIEN_SPEED, ALIEN_SPEED_INCREASE_FACTOR
 )
 from player import Player
 from alien import Alien
@@ -89,20 +89,23 @@ while True:
     if not aliens:
         scoreboard.increase_level()
         scoreboard.display_message(f"Congratulations!\nNow on Level {scoreboard.level}")
-        screen.update()  # Explicitly update the screen to show the message
         time.sleep(3)  # Display the message for 3 seconds
-        scoreboard.clear()  # Clear the congratulations message
+        scoreboard.clear()
+
+        # Increase difficulty
+        NUMBER_OF_ALIENS += ALIEN_COUNT_INCREASE
+        ALIEN_SPEED *= ALIEN_SPEED_INCREASE_FACTOR
 
         # Repopulate the aliens for the next level
         aliens = []
         for i in range(NUMBER_OF_ALIENS):
             alien = Alien()
+            alien.speed_val = ALIEN_SPEED
             x = -200 + (i * 50)
             y = 250
             alien.goto(x, y)
             aliens.append(alien)
-
-        # Now, display the new level
+            
         scoreboard.update_level()
 
 

@@ -20,4 +20,4 @@ class Alien(turtle.Turtle):
     def change_direction(self):
         """Change the direction of the alien's movement and move it down a step."""
         self.speed_val *= -1
-        self.sety(self.ycor() - 20)
+        self.sety(self.ycor() - 5)

@@ -16,7 +16,9 @@ ALIEN_SHAPE = "circle"
 ALIEN_COLOR = "red"
 ALIEN_START_Y = 250
 ALIEN_SPEED = 4
+ALIEN_SPEED_INCREASE_FACTOR = 1.02 # Increase speed by 2% each level
 NUMBER_OF_ALIENS = 5
+ALIEN_COUNT_INCREASE = 2  # Increase by 2 aliens every level
 
 # Bullet settings
 BULLET_SHAPE = "triangle"
