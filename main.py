@@ -6,6 +6,7 @@ from settings import (
 from player import Player
 from alien import Alien
 from bullet import Bullet
+from scoreboard import Scoreboard
 import time
 
 # Setting up the screen
@@ -29,6 +30,9 @@ for i in range(NUMBER_OF_ALIENS):
 
 # Initialize the player's bullet
 bullet = Bullet()
+
+# Initialize the scoreboard
+scoreboard = Scoreboard()
 
 # Function to move the player left
 def move_left():
@@ -78,7 +82,29 @@ while True:
             # Remove the alien
             alien.hideturtle()
             aliens.remove(alien)
+
             break  # Exit the loop to prevent iterating over a modified list
+
+    # Check if all aliens are removed
+    if not aliens:
+        scoreboard.increase_level()
+        scoreboard.display_message(f"Congratulations!\nNow on Level {scoreboard.level}")
+        screen.update()  # Explicitly update the screen to show the message
+        time.sleep(3)  # Display the message for 3 seconds
+        scoreboard.clear()  # Clear the congratulations message
+
+        # Repopulate the aliens for the next level
+        aliens = []
+        for i in range(NUMBER_OF_ALIENS):
+            alien = Alien()
+            x = -200 + (i * 50)
+            y = 250
+            alien.goto(x, y)
+            aliens.append(alien)
+
+        # Now, display the new level
+        scoreboard.update_level()
+
 
     # Change direction for all aliens if any of them hit the boundary
     if change_direction_flag:
