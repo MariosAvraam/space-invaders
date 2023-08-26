@@ -8,6 +8,8 @@ SCREEN_TITLE = "Space Invaders"
 PLAYER_SHAPE = "square"
 PLAYER_COLOR = "blue"
 PLAYER_START_Y = -250
+PLAYER_BOUND_LEFT = -SCREEN_WIDTH // 2 + 20  # Adjust these values if needed
+PLAYER_BOUND_RIGHT = SCREEN_WIDTH // 2 - 20
 
 # Alien settings
 ALIEN_SHAPE = "circle"

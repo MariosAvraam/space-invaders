@@ -1,5 +1,5 @@
 import turtle
-from settings import PLAYER_SHAPE, PLAYER_COLOR, PLAYER_START_Y
+from settings import PLAYER_SHAPE, PLAYER_COLOR, PLAYER_START_Y, PLAYER_BOUND_LEFT, PLAYER_BOUND_RIGHT
 
 class Player(turtle.Turtle):
     def __init__(self):
@@ -13,10 +13,12 @@ class Player(turtle.Turtle):
 
     def move_left(self):
         x = self.xcor()
-        x -= 20
-        self.setx(x)
+        if x > PLAYER_BOUND_LEFT:
+            x -= 20
+            self.setx(x)
 
     def move_right(self):
         x = self.xcor()
-        x += 20
-        self.setx(x)
+        if x < PLAYER_BOUND_RIGHT:
+            x += 20
+            self.setx(x)
