@@ -1,7 +1,7 @@
 import turtle
 from settings import (
     SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BG_COLOR, SCREEN_TITLE, 
-    NUMBER_OF_ALIENS, ALIEN_COUNT_INCREASE, ALIEN_SPEED, ALIEN_SPEED_INCREASE_FACTOR
+    NUMBER_OF_ALIENS, ALIEN_COUNT_INCREASE, ALIEN_SPEED, ALIEN_SPEED_INCREASE_FACTOR, MAX_ALIENS_PER_ROW
 )
 from player import Player
 from alien import Alien
@@ -98,15 +98,24 @@ while True:
 
         # Repopulate the aliens for the next level
         aliens = []
-        for i in range(NUMBER_OF_ALIENS):
-            alien = Alien()
-            alien.speed_val = ALIEN_SPEED
-            x = -200 + (i * 50)
-            y = 250
-            alien.goto(x, y)
-            aliens.append(alien)
-            
-        scoreboard.update_level()
+
+        # Calculate rows and columns
+        num_rows = NUMBER_OF_ALIENS // MAX_ALIENS_PER_ROW
+        if NUMBER_OF_ALIENS % MAX_ALIENS_PER_ROW > 0:
+            num_rows += 1
+
+        num_columns = min(NUMBER_OF_ALIENS, MAX_ALIENS_PER_ROW)
+
+        for row in range(num_rows):
+            for col in range(num_columns):
+                alien = Alien()
+                alien.speed_val = ALIEN_SPEED
+                x = -200 + (col * 50)
+                y = 250 - (row * 50)
+                alien.goto(x, y)
+                aliens.append(alien)
+                if len(aliens) >= NUMBER_OF_ALIENS:
+                    break
 
 
     # Change direction for all aliens if any of them hit the boundary

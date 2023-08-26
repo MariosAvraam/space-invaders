@@ -19,6 +19,7 @@ ALIEN_SPEED = 4
 ALIEN_SPEED_INCREASE_FACTOR = 1.02 # Increase speed by 2% each level
 NUMBER_OF_ALIENS = 5
 ALIEN_COUNT_INCREASE = 2  # Increase by 2 aliens every level
+MAX_ALIENS_PER_ROW = 6
 
 # Bullet settings
 BULLET_SHAPE = "triangle"
