@@ -6,6 +6,7 @@ from settings import (
 from player import Player
 from alien import Alien
 from bullet import Bullet
+import time
 
 # Setting up the screen
 screen = turtle.Screen()
@@ -52,18 +53,22 @@ screen.onkeypress(fire_bullet, "space")
 # Main game loop
 while True:
     screen.update()
+    time.sleep(0.02)
 
     # Move the bullet
     bullet.move()
 
+    # Flag to track if any alien hits the boundary
+    change_direction_flag = False
+
     # Move the aliens
     for alien in aliens:
         alien.move()
-
-        # Change alien direction if hit the edge
+        # Check if an alien hits the boundary
         if alien.xcor() > 230 or alien.xcor() < -230:
-            for a in aliens:
-                a.change_direction()
-            break
+            change_direction_flag = True
 
-screen.mainloop()
+    # Change direction for all aliens if any of them hit the boundary
+    if change_direction_flag:
+        for alien in aliens:
+            alien.change_direction()

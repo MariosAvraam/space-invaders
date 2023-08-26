@@ -2,6 +2,8 @@ import turtle
 from settings import BULLET_SHAPE, BULLET_COLOR, BULLET_SPEED
 
 class Bullet(turtle.Turtle):
+    """Represents the bullet shot by the player."""
+    
     def __init__(self):
         super().__init__()
         self.speed(0)
