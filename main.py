@@ -68,7 +68,20 @@ while True:
         if alien.xcor() > 230 or alien.xcor() < -230:
             change_direction_flag = True
 
+        # Check if the bullet has collided with the alien
+        if bullet.is_collision(alien):
+            # Reset the bullet
+            bullet.hideturtle()
+            bullet.state = "ready"
+            bullet.goto(-1000, 1000)  # Move bullet out of the screen
+
+            # Remove the alien
+            alien.hideturtle()
+            aliens.remove(alien)
+            break  # Exit the loop to prevent iterating over a modified list
+
     # Change direction for all aliens if any of them hit the boundary
     if change_direction_flag:
         for alien in aliens:
             alien.change_direction()
+

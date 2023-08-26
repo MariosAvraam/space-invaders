@@ -3,7 +3,7 @@ from settings import BULLET_SHAPE, BULLET_COLOR, BULLET_SPEED
 
 class Bullet(turtle.Turtle):
     """Represents the bullet shot by the player."""
-    
+
     def __init__(self):
         super().__init__()
         self.speed(0)
@@ -38,3 +38,7 @@ class Bullet(turtle.Turtle):
         if self.ycor() > 275:
             self.hideturtle()
             self.state = "ready"
+
+    def is_collision(self, target):
+        """Check if the bullet has collided with the target."""
+        return self.distance(target) < 25
