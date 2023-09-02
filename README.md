@@ -3,6 +3,8 @@
 ## Description
 A classic shoot 'em up game built using Python's turtle graphics module. Defend your spaceship against waves of alien ships. As you progress, the game becomes more challenging!
 
+![Screenshot of game screen](game_image.png)
+
 ## Features
 - Move your spaceship left and right to dodge incoming alien ships.
 - Fire bullets to destroy the alien ships.
